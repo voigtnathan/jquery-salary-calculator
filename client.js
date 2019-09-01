@@ -1,3 +1,4 @@
+console.log('in js file');
 const employees = [
   {
     firstName: 'Jenny',
@@ -33,5 +34,24 @@ const employees = [
 $(document).ready(readyNow);
 
 function readyNow(){
+  console.log('in ready now')
+  handleSubmit();
+}
 
+function handleSubmit(){
+  console.log('in handle submit');
+  $('#submit').on('click', addEmployee);
+  
+}
+ 
+function addEmployee(){
+  console.log('in addperson')
+  let newEmployee = {
+    firstName : $('#first').val(),
+    lastName : $('#last').val(),
+     employeeID : $('#empID').val(),
+     annualSalary : $('#salary').val(),
+    jobTitle : $('#jobPosition').val()
+  }
+  console.log(newEmployee);
 }
