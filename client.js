@@ -1,30 +1,30 @@
 console.log('in js file');
 const employees = [
   {
-    firstName: 'Jenny',
-    lastName: 'Tailya',
+    firstName: 'Mike',
+    lastName: 'Smith',
     employeeID: '2405',
     annualSalary: 47000,
     jobTitle: 'Marketing'
   },
   {
     firstName: 'Ben',
-    lastName: 'Dover',
-    employeeID: '2405',
+    lastName: 'Smith',
+    employeeID: '24505',
     annualSalary: 51000,
-    jobTitle: 'backroom specialist'
+    jobTitle: 'specialist'
   },
   {
     firstName: 'Mike',
-    lastName: 'Hunt',
-    employeeID: '2405',
+    lastName: 'Mikerson',
+    employeeID: '2605',
     annualSalary: 47000,
     jobTitle: 'boss man'
   },
   {
-    firstName: 'Anna',
-    lastName: 'Lee',
-    employeeID: '2405',
+    firstName: 'Derp',
+    lastName: 'Derpington',
+    employeeID: '2705',
     annualSalary: 47000,
     jobTitle: 'secretary'
   },
@@ -57,14 +57,16 @@ function addEmployee(){
   console.log(newEmployee);
   employees.push(newEmployee);
   renderList();
-  
 }
+
 function renderList(){
   console.log('function to render list');
   $('#employeeList').empty();
-  for(employee of employees){
-  $('#employeeList').append(`<li>First Name : ${employee.firstName}   Last Name : ${employee.lastName}   ID : ${employee.employeeID}   Salary : ${employee.annualSalary}   Job Title : ${employee.jobTitle}  <button id="deleteEmployee" onCLick="removeEmployee(this)">Delete</button><br/></li>`);
-  }
+  let objectIndex = 0;
+  for(let i = 0; i < employees.length; i++){
+  $('#employeeList').append(`<li id="employeeObject">First Name : ${employees[i].firstName}   Last Name : ${employees[i].lastName}   ID : ${employees[i].employeeID}   Salary : ${employees[i].annualSalary}   Job Title : ${employees[i].jobTitle}  <button id="delete" onCLick="removeEmployee(this)">Delete</button><br/></li>`);
+  objectIndex += 1;
+}
   totalSalary();
 }
 
@@ -74,10 +76,15 @@ function totalSalary(){
     total += employees[i].annualSalary;
   }
   $('#totalSalary').empty();
-  $('#totalSalary').append(`Monthly Total Salary = ${total}</h4>`)
+  $('#totalSalary').append(`Monthly Total Salary = $${total}</h4>`)
   return total;
 }
 function removeEmployee(){
+
+  // console.log('remove employee triggered');
+ let toRemove = $(`#employeeObject`).index();
+ console.group(toRemove);
+$('#employeeObject').remove();
 
 }
 
